@@ -225,3 +225,48 @@ myresult = mycursor.fetchall() #will fetch all the data from last executed state
 for row in myresult:
     print(row)
 
+
+
+############################ WHERE & WILDCARDS ##########################
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "#MYSQL12345**97",
+    database = 'sql_course'
+)
+
+mycursor = mydb.cursor()
+
+sql = "SELECT * FROM students WHERE age = 17 "
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for result in myresult:
+    print(result)
+
+
+#wildcards : if we want to find out that starts with something, ends with something or have that particular phrase, 
+# we can use the wildcards which includes the start, end of a given letter of a phrase.
+
+sql = "SELECT * FROM students WHERE name LIKE 'Ra%'"
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for result in myresult:
+    print(result)
+
+#e.g
+sql = "SELECT * FROM students WHERE name = %s"
+
+mycursor.execute(sql,("Rach",))
+
+myresult = mycursor.fetchall()
+
+for result in myresult:
+    print("---------",result)
