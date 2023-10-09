@@ -270,3 +270,49 @@ myresult = mycursor.fetchall()
 
 for result in myresult:
     print("---------",result)
+
+
+
+
+##################### update and limit query ########################
+
+
+import mysql.connector
+
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "#MYSQL12345**97",
+    database = 'sql_course'
+)
+
+mycursor = mydb.cursor()
+
+#updating the queries
+
+#get the name of BOB and set the age
+
+sql = "UPDATE students SET age = 13 WHERE name = 'BOB'"
+
+mycursor.execute(sql)
+mydb.commit()
+
+#limiting the results
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SELECT * FROM students LIMIT 5")
+myresult = mycursor.fetchall()
+for result in myresult:
+    print(result)   #here we get first five values 
+mydb.commit()
+
+print("-----------------")
+mycursor.execute("SELECT * FROM students LIMIT 5 OFFSET 2 ")
+myresult = mycursor.fetchall()
+for result in myresult:
+    print(result)   #here we get first five values starting after 2nd value 
+mydb.commit()
+
+
+
