@@ -282,7 +282,7 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host = "localhost",
     user = "root",
-    password = "#MYSQL12345**97",
+    password = "******************",
     database = 'sql_course'
 )
 
