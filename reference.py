@@ -316,3 +316,40 @@ mydb.commit()
 
 
 
+###################### order the results using mysql keywords ########################
+
+
+mycursor = mydb.cursor()
+
+sql = "SELECT * FROM students ORDER BY age"  #by default it is in ascending order  #use DESC 
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetchall()
+
+for r in myresult:
+    print(r)
+
+
+################## delete entries and drop tables #####################
+#delete rows
+
+sql = "DELETE FROM students WHERE name = 'amanda'"  #this removes amanda
+
+mycursor.execute(sql)
+
+mydb.commit()
+
+myresult = mycursor.fetchall()
+
+print(myresult)
+
+#delete tables
+sql = "DROP TABLE students"  #
+
+mycursor.execute(sql)
+
+mydb.commit()
+
+
+#"DROP TABLE IF EXISTS students" 
